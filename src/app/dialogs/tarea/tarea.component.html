@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>{{tarea.nombre}}</h2>
+<p>{{tarea.descripcion}}</p>
+<mat-dialog-content>
+    <h3 class="text-muted">
+        Tareas
+    </h3>
+    <div class="input-group mb-3" *ngFor="let item of procesos; let i = index">
+        <div class="input-group-prepend">
+            <mat-checkbox [checked]="item.estado" (change)="cambiarEstado(i)">{{item.descripcion}}</mat-checkbox>
+        </div>
+    </div>
+    <div class="input-group mb-3" [formGroup]="forma">
+        <mat-form-field *ngIf="nuevoProceso">
+            <mat-label>Nueva Tarea</mat-label>
+            <input matInput placeholder="Nueva Tarea" formControlName="descripcion" (keyup.enter)="nuevaTarea()" (focusout)="noMasTarea()" #texto>
+        </mat-form-field>
+    </div>
+    <button mat-raised-button (click)="crearNuevaTarea()" [disabled]="nuevoProceso">Agregar nueva Tarea</button>
+</mat-dialog-content>
