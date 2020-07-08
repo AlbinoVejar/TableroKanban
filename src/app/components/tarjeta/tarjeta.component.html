@@ -1,4 +1,4 @@
-<mat-card (click)="abrirTarjeta(tarjeta)" class="bg-light" [ngClass]="{'mt-2': !first}" *ngFor="let tarjeta of inputTarjetas; first as first">
+<mat-card (click)="abrirTarjeta(tarjeta)" class="bg-light py-2" [ngClass]="{'': first, 'mt-2': !first}" *ngFor="let tarjeta of inputTarjetas; first as first">
     <mat-card-header>
         <mat-card-title>
             {{tarjeta.nombre}}
