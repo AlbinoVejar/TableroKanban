@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-4 mt-2">
-        <div class="d-flex flex-row">
+        <div class="d-flex align-items-start flex-nowrap">
             <mat-card *ngFor="let seccion of iSecciones; first as fs; index as i" [ngClass]="{'': fs, 'ml-3':!fs}" class="widthSeccion">
                 <mat-card-header class="d-flex mx-0">
                     <h2 class="w-100 text-center">{{seccion.nombre}}</h2>
