@@ -16,7 +16,6 @@ export class TarjetaComponent implements OnInit {
   ngOnInit(): void {
   }
   abrirTarjeta(tarea: Tarea){
-    console.log(tarea);
     const dialogRef = this.dialog.open(TareaComponent, {
       data: { tarea }
     });

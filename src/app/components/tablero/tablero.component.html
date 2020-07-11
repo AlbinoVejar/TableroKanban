@@ -1,0 +1,4 @@
+<app-navbar [iTablero]="tablero"></app-navbar>
+<div class="container-fluid">
+    <app-seccion [iSecciones]="tablero.secciones" (nuevaSeccion)="getNewSeccionChild($event)"></app-seccion>
+</div>

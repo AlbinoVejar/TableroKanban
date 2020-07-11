@@ -9,13 +9,19 @@ import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TareaComponent } from './dialogs/tarea/tarea.component';
 import { SeccionComponent } from './components/seccion/seccion.component';
+import { TableroComponent } from './components/tablero/tablero.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { NombreSeccionComponent } from './dialogs/nombre-seccion/nombre-seccion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TarjetaComponent,
     TareaComponent,
-    SeccionComponent
+    SeccionComponent,
+    TableroComponent,
+    NavbarComponent,
+    NombreSeccionComponent
   ],
   imports: [
     BrowserModule,

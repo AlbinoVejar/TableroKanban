@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Nueva sección</h1>
+<div mat-dialog-content [formGroup]="forma">
+    <mat-form-field>
+        <mat-label>Nombre para la sección</mat-label>
+        <input matInput placeholder="Trabajando..." formControlName="nombre">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-stroked-button color="warn" (click)="onNoClick()">Cancelar</button>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="getValueNombre()">Guardar</button>
+</div>
