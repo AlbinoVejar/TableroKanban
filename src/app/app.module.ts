@@ -12,6 +12,7 @@ import { SeccionComponent } from './components/seccion/seccion.component';
 import { TableroComponent } from './components/tablero/tablero.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NombreSeccionComponent } from './dialogs/nombre-seccion/nombre-seccion.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NombreSeccionComponent } from './dialogs/nombre-seccion/nombre-seccion.
     SeccionComponent,
     TableroComponent,
     NavbarComponent,
-    NombreSeccionComponent
+    NombreSeccionComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
