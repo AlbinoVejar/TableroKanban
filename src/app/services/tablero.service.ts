@@ -1,18 +1,47 @@
+import { Tarea } from './../models/Tarea.class';
 import { Tablero } from './../models/Tablero.class';
 import { Injectable } from '@angular/core';
+import { Seccion } from '../models/Seccion.class';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TableroService {
-  constructor() { }
-  guardarStorage(user: Tablero){
-    const jsonData = JSON.stringify(user);
-    localStorage.setItem(user.nombre, jsonData);
+  public tableros: Tablero[] = [];
+  public selectedTablero: Tablero;
+  public indexTablero: number;
+  constructor() {
+    this.getTableros();
+    this.selectedTablero = this.tableros[0];
+    this.indexTablero = 0;
   }
-  getDataStorage(user: Tablero){
-    if (localStorage.getItem(user.nombre)){
-      console.log(localStorage.getItem(user.nombre));
+  guardarStorage(){
+    const jsonData = JSON.stringify(this.tableros);
+    localStorage.setItem('misTableros', jsonData);
+  }
+  getDataStorage(){
+    if (localStorage.getItem('misTableros')){
+      console.log(localStorage.getItem('misTableros'));
     }
   }
+  getSecciones(indexTablero: number){
+    return this.tableros[indexTablero].secciones;
+  }
+  crearTablero(nombre: string){
+    this.tableros.push(new Tablero(nombre));
+    this.guardarStorage();
+  }
+  // getTableroSeleccionado(){
+  //   return this.selectedTablero;
+  // }
+  getTableros(): Tablero[]{
+    const data = localStorage.getItem('misTableros');
+    if (data){
+      this.tableros = JSON.parse(data);
+      return this.tableros;
+    }
+  }
+  // getTareas(seccion: Seccion): Tarea[]{
+  //   return seccion.tareas;
+  // }
 }

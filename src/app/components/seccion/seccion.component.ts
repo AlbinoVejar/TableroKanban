@@ -1,9 +1,12 @@
+import { TableroService } from './../../services/tablero.service';
 import { Seccion } from './../../models/Seccion.class';
 import { NombreSeccionComponent } from './../../dialogs/nombre-seccion/nombre-seccion.component';
 import { Tarea } from './../../models/Tarea.class';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatCard } from '@angular/material/card';
 @Component({
   selector: 'app-seccion',
   templateUrl: './seccion.component.html',
@@ -18,7 +21,8 @@ export class SeccionComponent implements OnInit {
   tarjetas: Tarea[] = [];
   constructor(
     private fb: FormBuilder,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private sv: TableroService
   ) {
     this.forma = this.fb.group({
       nombre: '',
@@ -38,10 +42,11 @@ export class SeccionComponent implements OnInit {
   salirInput(){
     this.active = null;
   }
-  guardarNuevaTarjeta(){
+  guardarNuevaTarjeta(index: number){
     this.active = null;
     const nuevaTarjeta = new Tarea(this.valueNombreTarea, this.valueDescripcionTarea);
-    this.tarjetas.push(nuevaTarjeta);
+    // this.iSecciones[index].tareas.push(nuevaTarjeta);
+    // console.log(this.iSecciones[index].tareas);
     this.forma.reset();
   }
   agregarSeccion(){
@@ -63,5 +68,13 @@ export class SeccionComponent implements OnInit {
   crearSeccion(nombre: string){
     const newSeccion = new Seccion(nombre);
     this.nuevaSeccion.emit(newSeccion);
+  }
+  pruebaDrop(event: CdkDragDrop<Tarea[]>){
+    console.log(event);
+    if (event.previousContainer === event.container){
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    }
   }
 }

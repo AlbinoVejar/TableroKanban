@@ -1,4 +1,4 @@
-<app-navbar [iTablero]="tablero"></app-navbar>
-<div class="container-fluid">
-    <app-seccion [iSecciones]="tablero.secciones" (nuevaSeccion)="getNewSeccionChild($event)"></app-seccion>
+<app-navbar [nombreTablero]="this.ps.selectedTablero.nombre" [iTableros]="this.ps.tableros" (indexTablero)="getTablero($event)"></app-navbar>
+<div cdkDropListGroup class="container-fluid">
+    <app-seccion [iSecciones]="secciones" (nuevaSeccion)="getNewSeccionChild($event)"></app-seccion>
 </div>

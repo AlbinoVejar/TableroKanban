@@ -12,7 +12,7 @@ import { SeccionComponent } from './components/seccion/seccion.component';
 import { TableroComponent } from './components/tablero/tablero.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NombreSeccionComponent } from './dialogs/nombre-seccion/nombre-seccion.component';
-import { LoginComponent } from './components/login/login.component';
+import { NombreTableroComponent } from './dialogs/nombre-tablero/nombre-tablero.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { LoginComponent } from './components/login/login.component';
     TableroComponent,
     NavbarComponent,
     NombreSeccionComponent,
-    LoginComponent,
+    NombreTableroComponent,
   ],
   imports: [
     BrowserModule,

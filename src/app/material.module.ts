@@ -8,6 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   exports: [
     MatCardModule,
@@ -17,7 +20,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    DragDropModule,
+    MatMenuModule,
+    MatSnackBarModule
   ],
   declarations: [],
   imports: [
@@ -29,7 +35,10 @@ import { MatSelectModule } from '@angular/material/select';
     MatInputModule,
     MatIconModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    DragDropModule,
+    MatMenuModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }

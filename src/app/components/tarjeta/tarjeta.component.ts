@@ -2,6 +2,8 @@ import { Tarea } from './../../models/Tarea.class';
 import { TareaComponent } from './../../dialogs/tarea/tarea.component';
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatCard } from '@angular/material/card';
 @Component({
   selector: 'app-tarjeta',
   templateUrl: './tarjeta.component.html',
