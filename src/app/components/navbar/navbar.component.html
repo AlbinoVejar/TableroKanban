@@ -16,9 +16,14 @@
             <span>Eliminar</span>
         </button>
     </mat-menu>
-    <mat-form-field appearance="legacy" class="text-center mx-auto">
+    <mat-form-field appearance="legacy" class="text-center mx-auto" *ngIf="!flagEditNombre">
         <mat-select [(ngModel)]="indice" (selectionChange)="onSelectTablero()" formControlName="iTablero">
             <mat-option [value]="i" *ngFor="let tablero of iTableros; let i = index">{{tablero.nombre}}</mat-option>
         </mat-select>
     </mat-form-field>
+    <mat-form-field class="text-center mx-auto" formControlName="nombre" *ngIf="flagEditNombre">
+        <mat-label>Nuevo Nombre</mat-label>
+        <input matInput (keyup.enter)="confirmEditName()">
+    </mat-form-field>
+    <!-- <input type="text" class="form-control" value="tablero.nombre" formControlName="nombre" *ngIf="flagEditNombre"> -->
 </mat-toolbar>

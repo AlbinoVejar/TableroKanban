@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   @Output() indexTablero = new EventEmitter<string>();
   indice: number = 0;
   forma: FormGroup;
+  flagEditNombre = false;
   constructor(
     private fb: FormBuilder,
     public dialog: MatDialog,
@@ -23,16 +24,20 @@ export class NavbarComponent implements OnInit {
   ) {
     this.indice = this.ps.indexTablero;
     this.forma = this.fb.group({
-      iTablero: ''
+      iTablero: '',
+      nombre: ''
     });
   }
   ngOnInit(): void {}
 
-  get indexTableroSeleccionado(){
+  get getIndexTableroSeleccionado(){
     return this.forma.get('iTablero').value;
   }
+  get getNombreTablero(){
+    return this.forma.get('nombre').value;
+  }
   onSelectTablero(){
-    return this.indexTablero.emit(this.indexTableroSeleccionado);
+    return this.indexTablero.emit(this.getIndexTableroSeleccionado);
   }
   // Acciones de botones del navbar
   crearNuevoTablero(){
@@ -42,6 +47,11 @@ export class NavbarComponent implements OnInit {
       this.ps.crearTablero(result);
     });
   }
-  editarTablero(index: number){}
+  editarTablero(index: number){
+    this.flagEditNombre = true;
+  }
   eliminarTablero(index: number){}
+  confirmEditName(){
+    this.flagEditNombre = false;
+  }
 }
