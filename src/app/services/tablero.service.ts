@@ -11,6 +11,7 @@ export class TableroService {
   public selectedTablero: Tablero;
   public indexTablero: number;
   constructor() {
+    // this.tableros.push(new Tablero('prueba1'));
     this.getTableros();
     this.selectedTablero = this.tableros[0];
     this.indexTablero = 0;
@@ -30,6 +31,21 @@ export class TableroService {
   crearTablero(nombre: string){
     this.tableros.push(new Tablero(nombre));
     this.guardarStorage();
+  }
+  crearSeccion(nombre: string){
+    this.tableros[this.indexTablero].secciones.push(new Seccion(nombre));
+    this.guardarStorage();
+  }
+  editarTablero(newNombre: string){
+    this.tableros[this.indexTablero].nombre = newNombre;
+    console.log(this.tableros);
+    this.guardarStorage();
+    this.getTableros();
+  }
+  borrarTablero(){
+    this.tableros.splice(this.indexTablero, 1);
+    this.guardarStorage();
+    this.getTableros();
   }
   // getTableroSeleccionado(){
   //   return this.selectedTablero;

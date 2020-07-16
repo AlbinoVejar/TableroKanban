@@ -47,11 +47,14 @@ export class NavbarComponent implements OnInit {
       this.ps.crearTablero(result);
     });
   }
-  editarTablero(index: number){
+  editarTablero(){
     this.flagEditNombre = true;
   }
-  eliminarTablero(index: number){}
+  eliminarTablero(){
+    this.ps.borrarTablero();
+  }
   confirmEditName(){
     this.flagEditNombre = false;
+    this.ps.editarTablero(this.getNombreTablero);
   }
 }

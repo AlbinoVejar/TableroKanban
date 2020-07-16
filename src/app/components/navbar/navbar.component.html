@@ -7,11 +7,11 @@
             <mat-icon>create_new_folder</mat-icon>
             <span>Nuevo Tablero</span>
         </button>
-        <button mat-menu-item (click)="editarTablero(indexTableroSeleccionado)">
+        <button mat-menu-item (click)="editarTablero()">
             <mat-icon>create</mat-icon>
             <span>Editar Tablero</span>
         </button>
-        <button mat-menu-item (click)="eliminarTablero(indexTableroSeleccionado)">
+        <button mat-menu-item (click)="eliminarTablero()">
             <mat-icon>delete</mat-icon>
             <span>Eliminar</span>
         </button>
@@ -23,7 +23,7 @@
     </mat-form-field>
     <mat-form-field class="text-center mx-auto" formControlName="nombre" *ngIf="flagEditNombre">
         <mat-label>Nuevo Nombre</mat-label>
-        <input matInput (keyup.enter)="confirmEditName()">
+        <input matInput (keyup.enter)="confirmEditName()" formControlName="nombre">
     </mat-form-field>
     <!-- <input type="text" class="form-control" value="tablero.nombre" formControlName="nombre" *ngIf="flagEditNombre"> -->
 </mat-toolbar>
