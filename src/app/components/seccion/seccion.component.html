@@ -13,11 +13,11 @@
                             <mat-icon>add</mat-icon>
                             <span>Nueva Sección</span>
                         </button>
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="editarSeccion()">
                           <mat-icon>create</mat-icon>
                           <span>Editar</span>
                         </button>
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="borrarSeccion()">
                           <mat-icon>delete</mat-icon>
                           <span>Eliminar</span>
                         </button>

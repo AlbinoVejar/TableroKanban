@@ -1,3 +1,4 @@
+import { Proceso } from './../models/Proceso.class';
 import { Tarea } from './../models/Tarea.class';
 import { Tablero } from './../models/Tablero.class';
 import { Injectable } from '@angular/core';
@@ -32,10 +33,6 @@ export class TableroService {
     this.tableros.push(new Tablero(nombre));
     this.guardarStorage();
   }
-  crearSeccion(nombre: string){
-    this.tableros[this.indexTablero].secciones.push(new Seccion(nombre));
-    this.guardarStorage();
-  }
   editarTablero(newNombre: string){
     this.tableros[this.indexTablero].nombre = newNombre;
     console.log(this.tableros);
@@ -47,9 +44,6 @@ export class TableroService {
     this.guardarStorage();
     this.getTableros();
   }
-  // getTableroSeleccionado(){
-  //   return this.selectedTablero;
-  // }
   getTableros(): Tablero[]{
     const data = localStorage.getItem('misTableros');
     if (data){
@@ -57,7 +51,49 @@ export class TableroService {
       return this.tableros;
     }
   }
-  // getTareas(seccion: Seccion): Tarea[]{
-  //   return seccion.tareas;
-  // }
+  crearSeccion(nombre: string){
+    this.tableros[this.indexTablero].secciones.push(new Seccion(nombre));
+    this.guardarStorage();
+  }
+  editarSeccion(newNombre: string, indexSeccion: number){
+    this.tableros[this.indexTablero].secciones[indexSeccion].nombre = newNombre;
+    this.guardarStorage();
+  }
+  borrarSeccion(index: number){
+    this.tableros[this.indexTablero].secciones.splice(index, 1);
+    this.guardarStorage();
+    this.getTableros();
+  }
+  crearTarjeta(nombre: string, indexSeccion: number, descrip?: string){
+    this.tableros[this.indexTablero].secciones[indexSeccion].tareas.push(new Tarea(nombre, descrip));
+    this.guardarStorage();
+  }
+  editarTarjeta(nombre: string, indexSeccion: number, indexTarjeta: number, descrip?: string){
+    this.tableros[this.indexTablero].secciones[indexSeccion].tareas[indexTarjeta].nombre = nombre;
+    this.tableros[this.indexTablero].secciones[indexSeccion].tareas[indexTarjeta].descripcion = descrip;
+    this.guardarStorage();
+  }
+  borrarTarjeta(index: number, indexSeccion: number){
+    this.tableros[this.indexTablero].secciones[indexSeccion].tareas.splice(index,1);
+    this.guardarStorage();
+    this.getTableros();
+  }
+  crearTarea(nombre: string, indexSeccion: number, indexTarjeta: number){
+    this.tableros[this.indexTablero].secciones[indexSeccion].tareas[indexTarjeta].procesos.push(new Proceso(nombre));
+    this.guardarStorage();
+  }
+  editarTarea(indexTarea: number , indexSeccion: number, indexTarjeta: number, nombre: string, estado?: boolean){
+    if (nombre){
+      this.tableros[this.indexTablero].secciones[indexSeccion].tareas[indexTarjeta].procesos[indexTarea].descripcion = nombre;
+    }
+    if (estado){
+      this.tableros[this.indexTablero].secciones[indexSeccion].tareas[indexTarjeta].procesos[indexTarea].estado = estado;
+    }
+    this.guardarStorage();
+  }
+  borrarTarea(indexTarea: number , indexSeccion: number, indexTarjeta: number){
+    this.tableros[this.indexTablero].secciones[indexSeccion].tareas[indexTarjeta].procesos.splice(indexTarea, 1);
+    this.guardarStorage();
+    this.getTableros();
+  }
 }

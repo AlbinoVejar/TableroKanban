@@ -49,16 +49,6 @@ export class SeccionComponent implements OnInit {
     // console.log(this.iSecciones[index].tareas);
     this.forma.reset();
   }
-  agregarSeccion(){
-    const dialogRef = this.dialog.open(NombreSeccionComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      if (result){
-        this.crearSeccion(result);
-      }
-    });
-  }
   get valueNombreTarea(){
     return this.forma.get('nombre').value;
   }
@@ -77,4 +67,15 @@ export class SeccionComponent implements OnInit {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
   }
+  agregarSeccion(){
+    const dialogRef = this.dialog.open(NombreSeccionComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result){
+        this.crearSeccion(result);
+      }
+    });
+  }
+  editarSeccion(){}
+  borrarSeccion(){}
 }
